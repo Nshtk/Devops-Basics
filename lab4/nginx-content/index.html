@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lab4</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			margin-top: 50px;
+			background-color: #f0f0f0;
+		}
+
+		h1 {
+			color: #2c3e50;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: white;
+			border-radius: 8px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Hello from Kubernetes Nginx!</h1>
+		<p>This is a simple static webpage served from Nginx in Kubernetes.</p>
+		<p>Curent time: <span id="datetime"></span></p>
+	</div>
+
+	<script>
+		const dtElement = document.getElementById('datetime');
+		function updateDateTime() {
+			dtElement.textContent = new Date().toLocaleString();
+		}
+		updateDateTime();
+		setInterval(updateDateTime, 1000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+.git
+.gitlab
+Artifacts
+Packages
+Scripts
+*.md

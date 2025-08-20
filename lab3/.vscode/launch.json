@@ -1,0 +1,11 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "C#: lab3.Core Debug",
+			"type": "dotnet",
+			"request": "launch",
+			"projectPath": "${workspaceFolder}/Source/lab3.Core/lab3.Core.csproj"
+		}
+	]
+}

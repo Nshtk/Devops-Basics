@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./mysite
+    command: python runserver.py
+    volumes:
+      - ./mysite/:/usr/src/mysite/
+
+    env_file:
+      - .env.dev
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://127.0.0.1:8000/health || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    depends_on:
+      - db
+  nginx:
+    build: ./mysite/nginx
+    ports:
+      - 8080:80
+    depends_on:
+      - web
+    links:
+      - web
+  db:
+    image: postgres:13.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=4444555556
+      - POSTGRES_DB=furniture
+      - PGDATA=/var/lib/postgresql/data
+volumes:
+  postgres_data:
